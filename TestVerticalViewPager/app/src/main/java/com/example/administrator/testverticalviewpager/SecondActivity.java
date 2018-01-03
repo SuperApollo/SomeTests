@@ -36,7 +36,7 @@ public class SecondActivity extends Activity {
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0.2f);
         AnimationSet set = new AnimationSet(true);
-        set.setDuration(800);
+        set.setDuration(700);
         set.addAnimation(scaleAnimation);
         set.addAnimation(alphaAnimation);
         set.setAnimationListener(new Animation.AnimationListener() {
