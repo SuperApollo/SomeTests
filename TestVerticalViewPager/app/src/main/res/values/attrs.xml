@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--带圆角的imageview-->
+    <declare-styleable name="RoundCornerImageView">
+        <attr name="corner_radius" format="integer" />
+    </declare-styleable>
+    <!-- 圆形图片控件 -->
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color" />
+        <attr name="rounded_visible" format="boolean" />
+    </declare-styleable>
+    <!--跑马灯-->
+    <declare-styleable name="LampView">
+        <!--0代表左边显示，1代表右边显示-->
+        <attr name="show_style" format="integer" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.testverticalviewpager.MainActivity">
+
+    <com.example.administrator.testverticalviewpager.MyVerticalViewPager
+        android:id="@+id/vertical_vp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:visibility="gone" />
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始轮播" />
+
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="停止轮播" />
+
+    <ImageView
+        android:id="@+id/iv_test_glide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下一页" />
+
+    <Button
+        android:id="@+id/test_snack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="顶部snack" />
+
+    <Button
+        android:id="@+id/btn_swipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="无限滑动" />
+
+    <Button
+        android:id="@+id/btn_swipe_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试1个fragment无限滑" />
+
+    <com.example.administrator.testverticalviewpager.widget.RoundCornerImageView
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@color/colorAccent"
+        android:visibility="gone"
+        app:corner_radius="10" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent">
+
+        <com.example.administrator.testverticalviewpager.widget.MyStackView
+            android:id="@+id/stack_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+
+        <EditText
+            android:id="@+id/et_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="增加" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_lampview_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.administrator.testverticalviewpager.widget.LampView
+            android:id="@+id/lamp_view_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:show_style="0" />
+
+        <com.example.administrator.testverticalviewpager.widget.LampViewRight
+            android:id="@+id/lamp_view_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="visible"
+            app:show_style="1" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_add_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="添加"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_delete_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="删除"
+        android:visibility="gone" />
+
+
+</LinearLayout>

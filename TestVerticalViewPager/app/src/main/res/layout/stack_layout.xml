@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="39dp"
+    android:background="@drawable/bg_my_stack_view">
+
+
+    <com.example.administrator.testverticalviewpager.widget.RoundImageView
+        android:id="@+id/iv_stack_right_bottom"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignLeft="@+id/iv_stack_right_center"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/edit_profile_head_portrait" />
+
+    <com.example.administrator.testverticalviewpager.widget.RoundImageView
+        android:id="@+id/iv_stack_right_center"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignLeft="@+id/iv_stack_right_top"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/edit_profile_head_portrait" />
+
+    <com.example.administrator.testverticalviewpager.widget.RoundImageView
+        android:id="@+id/iv_stack_right_top"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/iv_stack_center"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/edit_profile_head_portrait" />
+
+    <com.example.administrator.testverticalviewpager.widget.RoundImageView
+        android:id="@+id/iv_stack_center"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/iv_stack_left"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/edit_profile_head_portrait" />
+
+    <com.example.administrator.testverticalviewpager.widget.RoundImageView
+        android:id="@+id/iv_stack_left"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/ll_stack_text"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/edit_profile_head_portrait" />
+
+    <LinearLayout
+        android:id="@+id/ll_stack_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="4dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_stack_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="5人"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_stack_machine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="围观1号机"
+            android:textColor="#FFFFFF"
+            android:textSize="9sp" />
+    </LinearLayout>
+
+
+</RelativeLayout>
