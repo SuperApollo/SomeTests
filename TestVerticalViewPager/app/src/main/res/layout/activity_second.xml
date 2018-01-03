@@ -9,7 +9,29 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="第二页" />
+        android:text="第二页"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btn_ready_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ready go" />
+
+        <ImageView
+            android:id="@+id/iv_ready_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ready"
+            android:visibility="gone" />
+    </RelativeLayout>
+
 
     <RadioGroup
         android:layout_width="match_parent"
