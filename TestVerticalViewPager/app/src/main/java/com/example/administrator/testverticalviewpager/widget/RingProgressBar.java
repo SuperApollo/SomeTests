@@ -131,10 +131,10 @@ public class RingProgressBar extends View {
 
         //绘制外层圆
         drawCircle(canvas);
-        //绘制文本内容
-        drawTextContent(canvas);
         //绘制进度条
         drawProgress(canvas);
+        //绘制文本内容
+        drawTextContent(canvas);
     }
 
 
@@ -170,7 +170,7 @@ public class RingProgressBar extends View {
         //获取文字的宽度 用于绘制文本内容
         float textWidth = paint.measureText(percent + "%");
         //绘制文本 会根据设置的是否显示文本的属性&是否是Stroke的样式进行判断
-        if (textIsShow && percent != 0 && style == STROKE) {
+        if (textIsShow && percent != 0) {//&& style == STROKE
             canvas.drawText(percent + "%", center - textWidth / 2, center + textSize / 2, paint);
         }
     }
