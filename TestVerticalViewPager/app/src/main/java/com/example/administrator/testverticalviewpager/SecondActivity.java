@@ -39,7 +39,10 @@ public class SecondActivity extends Activity {
             @Override
             public void onClick(View v) {
                 readyAnim();
-                mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS,100);
+                mBar1.setProgress(0);
+                mBar2.setProgress(0);
+                progress = 0;
+                mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS, 100);
             }
         });
     }
@@ -111,6 +114,7 @@ public class SecondActivity extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case UPDATE_PROGRESS:
+                    mHandler.removeMessages(UPDATE_PROGRESS);
                     if (progress < 100) {
                         progress++;
                         mBar1.setProgress(progress);

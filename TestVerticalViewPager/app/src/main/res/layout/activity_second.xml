@@ -61,6 +61,7 @@
             app:ringColor="@android:color/darker_gray"
             app:ringProgressColor="@color/colorPrimary"
             app:ringWidth="3dp"
+            android:visibility="gone"
             app:style="STROKE"
             app:textColor="@color/colorPrimary"
             app:textIsShow="true"
