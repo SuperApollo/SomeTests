@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         mRootView = getLayoutInflater().inflate(R.layout.activity_main, null);
         setContentView(mRootView);
         initView();
-
+        Log.d("apollo", "onCreate");
 //        testWebView();
 
     }
@@ -372,16 +372,47 @@ public class MainActivity extends AppCompatActivity {
         TopBarUtil.show(this, R.layout.activity_main, 1000);
     }
 
+    //按home键再返回activity会走
     @Override
-    protected void onPause() {
-        super.onPause();
-        verticalViewPager.stopLoop();
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("apollo", "onRestart");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("apollo", "onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         verticalViewPager.startLoop();
+        Log.d("apollo", "onResume");
+    }
+
+    //若跳转的activity主题是透明，则本activity失去焦点但可见，走onPause
+    //返回本activity走onResume
+    //若跳转的activity主题不是透明，则本activity失去焦点，不可见，走onPause，onStop
+    //返回本activity走onRestart，onStart，onResume
+    @Override
+    protected void onPause() {
+        super.onPause();
+        verticalViewPager.stopLoop();
+        Log.d("apollo", "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("apollo", "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("apollo", "onDestroy");
     }
 
     /**

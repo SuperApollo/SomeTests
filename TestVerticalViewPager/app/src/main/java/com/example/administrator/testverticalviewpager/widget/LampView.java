@@ -68,7 +68,6 @@ public class LampView extends LinearLayout {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = measureWH(widthMeasureSpec, 100, 0);
         int height = measureWH(heightMeasureSpec, 100, 1);
-        Log.d("apollo", "width: " + width + ",height: " + height);
         setMeasuredDimension(width, height);
 
         initView(height, widthMeasureSpec, heightMeasureSpec);
@@ -103,11 +102,9 @@ public class LampView extends LinearLayout {
 
         switch (model) {
             case MeasureSpec.EXACTLY://当你的控件设置了一个精确的值或者为match_parent时, 为这种模式
-                Log.d("apollo", "EXACTLY");
                 mySize = size;
                 break;
             case MeasureSpec.AT_MOST://当你的控件设置为wrap_content时，为这种模式
-                Log.d("apollo", "AT_MOST");
                 if (type == 0) {//宽
                     mySize = picW;
                 } else if (type == 1) {//高

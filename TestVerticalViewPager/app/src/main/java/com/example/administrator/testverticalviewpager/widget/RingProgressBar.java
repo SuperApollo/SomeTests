@@ -50,10 +50,10 @@ public class RingProgressBar extends View {
     private float ringWidth;
 
     //最大值
-    private int max;
+    private float max;
 
     //进度值
-    private int progress;
+    private float progress;
 
     //是否显示文字
     private boolean textIsShow;
@@ -71,7 +71,7 @@ public class RingProgressBar extends View {
     private OnProgressListener mOnProgressListener;
 
     // 圆环中心
-    private int center;
+    private float center;
 
     // 圆环半径
     private float radius;
@@ -110,10 +110,10 @@ public class RingProgressBar extends View {
         textColor = mTypedArray.getColor(R.styleable.RingProgressBar_textColor, Color.BLACK);
         textSize = mTypedArray.getDimension(R.styleable.RingProgressBar_textSize, 16);
         ringWidth = mTypedArray.getDimension(R.styleable.RingProgressBar_ringWidth, 5);
-        max = mTypedArray.getInteger(R.styleable.RingProgressBar_max, 100);
+        max = mTypedArray.getFloat(R.styleable.RingProgressBar_max, 100);
         textIsShow = mTypedArray.getBoolean(R.styleable.RingProgressBar_textIsShow, true);
         style = mTypedArray.getInt(R.styleable.RingProgressBar_style, 0);
-        progress = mTypedArray.getInteger(R.styleable.RingProgressBar_progress, 0);
+        progress = mTypedArray.getFloat(R.styleable.RingProgressBar_progress, 0);
         padding = mTypedArray.getDimension(R.styleable.RingProgressBar_ringPadding, 5);
 
         mTypedArray.recycle();
@@ -127,7 +127,7 @@ public class RingProgressBar extends View {
         super.onDraw(canvas);
 
         center = getWidth() / 2;
-        radius = (center - ringWidth / 2);
+        radius = (center - ringWidth);//外层圆环的半径
 
         //绘制外层圆
         drawCircle(canvas);
@@ -167,12 +167,13 @@ public class RingProgressBar extends View {
         paint.setTypeface(Typeface.DEFAULT);
         //设置进度值
         int percent = (int) (((float) progress / (float) max) * 100);
-//        (100-percent)/100*;
+        String seconds = (int) ((100f - percent) * 25f / 100) + "s";
         //获取文字的宽度 用于绘制文本内容
-        float textWidth = paint.measureText(percent + "%");
+//        float textWidth = paint.measureText(percent + "%");
+        float textWidth = paint.measureText(seconds);
         //绘制文本 会根据设置的是否显示文本的属性&是否是Stroke的样式进行判断
         if (textIsShow && percent != 0) {//&& style == STROKE
-            canvas.drawText(percent + "%", center - textWidth / 2, center + textSize / 2, paint);
+            canvas.drawText(seconds, center - textWidth / 2, center + textSize / 2, paint);
         }
     }
 
@@ -189,9 +190,11 @@ public class RingProgressBar extends View {
         RectF strokeOval = new RectF(center - radius, center - radius, center + radius,
                 center + radius);
         //FIll样式
-        RectF fillOval = new RectF(center - radius + ringWidth + padding,
-                center - radius + ringWidth + padding, center + radius - ringWidth - padding,
-                center + radius - ringWidth - padding);
+        float left = center - radius + ringWidth + padding;
+        float top = center - radius + ringWidth + padding;
+        float right = center + radius - ringWidth - padding;
+        float bottom = center + radius - ringWidth - padding;
+        RectF fillOval = new RectF(left, top, right, bottom);
 
         switch (style) {
             case STROKE: {
@@ -204,7 +207,9 @@ public class RingProgressBar extends View {
                 paint.setStyle(Paint.Style.FILL_AND_STROKE);
                 paint.setStrokeCap(Paint.Cap.ROUND);
                 if (progress != 0) {
-                    canvas.drawArc(fillOval, -90, 360 * progress / max, true, paint);
+                    //绘制圆弧
+                    float sweepAngle = 360 * progress / max;
+                    canvas.drawArc(fillOval, -90, sweepAngle, true, paint);
                 }
                 break;
             }
@@ -254,7 +259,7 @@ public class RingProgressBar extends View {
     /**
      * 获取当前的最大进度值
      */
-    public synchronized int getMax() {
+    public synchronized float getMax() {
 
         return max;
     }
@@ -275,7 +280,7 @@ public class RingProgressBar extends View {
     /**
      * 获取进度值
      */
-    public synchronized int getProgress() {
+    public synchronized float getProgress() {
 
         return progress;
     }
@@ -284,7 +289,7 @@ public class RingProgressBar extends View {
     /**
      * 设置进度值 根据进度值进行View的重绘刷新进度
      */
-    public synchronized void setProgress(int progress) {
+    public synchronized void setProgress(float progress) {
 
         if (progress < 0) {
             throw new IllegalArgumentException("The progress of 0");

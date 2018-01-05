@@ -47,7 +47,7 @@
             app:style="FILL"
             app:textColor="@color/colorAccent"
             app:textIsShow="true"
-            app:textSize="16sp" />
+            app:textSize="20sp" />
 
         <com.example.administrator.testverticalviewpager.widget.RingProgressBar
             android:id="@+id/progress_bar_2"

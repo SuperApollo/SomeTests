@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity" />
+        <!--android:theme="@android:style/Theme.Translucent"-->
         <activity android:name=".OneActivity" />
         <activity android:name=".TwoActivity" />
         <activity android:name=".QuickGrabActivity" />

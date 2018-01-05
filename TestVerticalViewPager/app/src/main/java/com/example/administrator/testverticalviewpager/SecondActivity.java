@@ -25,7 +25,7 @@ public class SecondActivity extends Activity {
     private static RingProgressBar mBar2;
     private static final int UPDATE_PROGRESS = 0;
     private static MyHandler mHandler;
-    private static int progress = 0;
+    private static float progress = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class SecondActivity extends Activity {
             @Override
             public void onClick(View v) {
                 readyAnim();
+                mBar1.setMax(250);
                 mBar1.setProgress(0);
                 mBar2.setProgress(0);
                 progress = 0;
@@ -115,8 +116,8 @@ public class SecondActivity extends Activity {
             switch (msg.what) {
                 case UPDATE_PROGRESS:
                     mHandler.removeMessages(UPDATE_PROGRESS);
-                    if (progress < 100) {
-                        progress++;
+                    if (progress < 250) {
+                        progress ++;
                         mBar1.setProgress(progress);
                         mBar2.setProgress(progress);
                         mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS, 100);
