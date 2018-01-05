@@ -12,7 +12,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
-import com.example.administrator.testverticalviewpager.widget.RingProgressBar;
+import com.example.administrator.testverticalviewpager.widget.CountDwonView;
 
 /**
  * Created by Administrator on 2017/12/12.
@@ -21,8 +21,8 @@ import com.example.administrator.testverticalviewpager.widget.RingProgressBar;
 public class SecondActivity extends Activity {
 
     private ImageView mIvReadyGo;
-    private static RingProgressBar mBar1;
-    private static RingProgressBar mBar2;
+    private static CountDwonView mBar1;
+    private static CountDwonView mBar2;
     private static final int UPDATE_PROGRESS = 0;
     private static MyHandler mHandler;
     private static float progress = 0;

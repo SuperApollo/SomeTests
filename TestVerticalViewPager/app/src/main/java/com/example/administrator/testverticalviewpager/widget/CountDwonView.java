@@ -18,7 +18,7 @@ import com.example.administrator.testverticalviewpager.R;
  * Created by Apollo on 2018/1/4 16:32.
  */
 
-public class RingProgressBar extends View {
+public class CountDwonView extends View {
     //画笔对象
     private Paint paint;
 
@@ -77,19 +77,19 @@ public class RingProgressBar extends View {
     private float radius;
 
 
-    public RingProgressBar(Context context) {
+    public CountDwonView(Context context) {
 
         this(context, null);
     }
 
 
-    public RingProgressBar(Context context, AttributeSet attrs) {
+    public CountDwonView(Context context, AttributeSet attrs) {
 
         this(context, attrs, 0);
     }
 
 
-    public RingProgressBar(Context context, AttributeSet attrs, int defStyle) {
+    public CountDwonView(Context context, AttributeSet attrs, int defStyle) {
 
         super(context, attrs, defStyle);
 
@@ -102,19 +102,19 @@ public class RingProgressBar extends View {
         result = dp2px(100);
 
         //初始化属性
-        TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.RingProgressBar);
+        TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.CountDwonView);
 
-        ringColor = mTypedArray.getColor(R.styleable.RingProgressBar_ringColor, Color.BLACK);
-        ringProgressColor = mTypedArray.getColor(R.styleable.RingProgressBar_ringProgressColor,
+        ringColor = mTypedArray.getColor(R.styleable.CountDwonView_ringColor, Color.BLACK);
+        ringProgressColor = mTypedArray.getColor(R.styleable.CountDwonView_ringProgressColor,
                 Color.WHITE);
-        textColor = mTypedArray.getColor(R.styleable.RingProgressBar_textColor, Color.BLACK);
-        textSize = mTypedArray.getDimension(R.styleable.RingProgressBar_textSize, 16);
-        ringWidth = mTypedArray.getDimension(R.styleable.RingProgressBar_ringWidth, 5);
-        max = mTypedArray.getFloat(R.styleable.RingProgressBar_max, 100);
-        textIsShow = mTypedArray.getBoolean(R.styleable.RingProgressBar_textIsShow, true);
-        style = mTypedArray.getInt(R.styleable.RingProgressBar_style, 0);
-        progress = mTypedArray.getFloat(R.styleable.RingProgressBar_progress, 0);
-        padding = mTypedArray.getDimension(R.styleable.RingProgressBar_ringPadding, 5);
+        textColor = mTypedArray.getColor(R.styleable.CountDwonView_textColor, Color.BLACK);
+        textSize = mTypedArray.getDimension(R.styleable.CountDwonView_textSize, 16);
+        ringWidth = mTypedArray.getDimension(R.styleable.CountDwonView_ringWidth, 5);
+        max = mTypedArray.getFloat(R.styleable.CountDwonView_max, 100);
+        textIsShow = mTypedArray.getBoolean(R.styleable.CountDwonView_textIsShow, true);
+        style = mTypedArray.getInt(R.styleable.CountDwonView_style, 0);
+        progress = mTypedArray.getFloat(R.styleable.CountDwonView_progress, 0);
+        padding = mTypedArray.getDimension(R.styleable.CountDwonView_ringPadding, 5);
 
         mTypedArray.recycle();
     }

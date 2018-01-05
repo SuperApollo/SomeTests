@@ -11,7 +11,7 @@
         <item name="android:windowEnterAnimation">@anim/topbar_in</item>
         <item name="android:windowExitAnimation">@anim/topbar_out</item>
     </style>
-    <declare-styleable name="RingProgressBar">
+    <declare-styleable name="CountDwonView">
         <attr name="ringColor" format="color" />
         <attr name="ringProgressColor" format="color" />
         <attr name="ringWidth" format="dimension" />

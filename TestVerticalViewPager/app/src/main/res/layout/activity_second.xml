@@ -32,7 +32,7 @@
             android:src="@mipmap/ready"
             android:visibility="gone" />
 
-        <com.example.administrator.testverticalviewpager.widget.RingProgressBar
+        <com.example.administrator.testverticalviewpager.widget.CountDwonView
             android:id="@+id/progress_bar_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             app:textIsShow="true"
             app:textSize="20sp" />
 
-        <com.example.administrator.testverticalviewpager.widget.RingProgressBar
+        <com.example.administrator.testverticalviewpager.widget.CountDwonView
             android:id="@+id/progress_bar_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
