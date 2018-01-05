@@ -76,6 +76,9 @@ public class CountDwonView extends View {
     // 圆环半径
     private float radius;
 
+    //总倒计时时长
+    private float timeSeconds;
+
 
     public CountDwonView(Context context) {
 
@@ -167,7 +170,7 @@ public class CountDwonView extends View {
         paint.setTypeface(Typeface.DEFAULT);
         //设置进度值
         int percent = (int) (((float) progress / (float) max) * 100);
-        String seconds = (int) ((100f - percent) * 25f / 100) + "s";
+        String seconds = (int) ((100f - percent) * timeSeconds / 100) + "s";
         //获取文字的宽度 用于绘制文本内容
 //        float textWidth = paint.measureText(percent + "%");
         float textWidth = paint.measureText(seconds);
@@ -417,6 +420,10 @@ public class CountDwonView extends View {
         void progressToComplete();
     }
 
+
+    public void setTimeSeconds(float timeSeconds) {
+        this.timeSeconds = timeSeconds;
+    }
 
     public void setOnProgressListener(OnProgressListener mOnProgressListener) {
 

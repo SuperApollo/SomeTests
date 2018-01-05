@@ -24,6 +24,13 @@
             android:layout_height="wrap_content"
             android:text="ready go" />
 
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="stop" />
+
         <ImageView
             android:id="@+id/iv_ready_go"
             android:layout_width="wrap_content"
@@ -56,12 +63,12 @@
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:layout_marginBottom="100dp"
+            android:visibility="gone"
             app:max="100"
             app:progress="50"
             app:ringColor="@android:color/darker_gray"
             app:ringProgressColor="@color/colorPrimary"
             app:ringWidth="3dp"
-            android:visibility="gone"
             app:style="STROKE"
             app:textColor="@color/colorPrimary"
             app:textIsShow="true"
