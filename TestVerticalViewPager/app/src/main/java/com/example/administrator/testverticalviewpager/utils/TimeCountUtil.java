@@ -11,7 +11,7 @@ import com.example.administrator.testverticalviewpager.widget.CountDwonView;
 
 public class TimeCountUtil {
     private volatile static TimeCountUtil instance;
-    static CountDwonView countDwonView;
+    private static CountDwonView countDwonView;
     private static final int UPDATE_PROGRESS = 0;
     private static MyHandler mHandler;
     private static float progress = 0;
@@ -20,6 +20,10 @@ public class TimeCountUtil {
     private TimeCountUtil(CountDwonView countDwonView) {
         this.countDwonView = countDwonView;
         mHandler = new MyHandler();
+    }
+
+    public void updateCountDwonView(CountDwonView countDwonView) {
+        this.countDwonView = countDwonView;
     }
 
     public static TimeCountUtil getInstance(CountDwonView countDwonView) {
@@ -73,7 +77,7 @@ public class TimeCountUtil {
             switch (msg.what) {
                 case UPDATE_PROGRESS:
                     mHandler.removeMessages(UPDATE_PROGRESS);
-                    if (progress < timeSeconds*10) {
+                    if (progress < timeSeconds * 10) {
                         progress++;
                         countDwonView.setProgress(progress);
                         mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS, 100);
