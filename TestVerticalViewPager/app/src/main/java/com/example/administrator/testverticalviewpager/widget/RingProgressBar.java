@@ -74,7 +74,7 @@ public class RingProgressBar extends View {
     private int center;
 
     // 圆环半径
-    private int radius;
+    private float radius;
 
 
     public RingProgressBar(Context context) {
@@ -127,7 +127,7 @@ public class RingProgressBar extends View {
         super.onDraw(canvas);
 
         center = getWidth() / 2;
-        radius = (int) (center - ringWidth / 2);
+        radius = (center - ringWidth / 2);
 
         //绘制外层圆
         drawCircle(canvas);
@@ -167,6 +167,7 @@ public class RingProgressBar extends View {
         paint.setTypeface(Typeface.DEFAULT);
         //设置进度值
         int percent = (int) (((float) progress / (float) max) * 100);
+//        (100-percent)/100*;
         //获取文字的宽度 用于绘制文本内容
         float textWidth = paint.measureText(percent + "%");
         //绘制文本 会根据设置的是否显示文本的属性&是否是Stroke的样式进行判断
