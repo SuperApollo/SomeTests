@@ -15,7 +15,7 @@ public class TimeCountUtil {
     private static final int UPDATE_PROGRESS = 0;
     private static MyHandler mHandler;
     private static float progress = 0;
-    private static int timeSeconds = 10;
+    private static float timeSeconds = 10;
 
     private TimeCountUtil(CountDwonView countDwonView) {
         this.countDwonView = countDwonView;
@@ -45,7 +45,7 @@ public class TimeCountUtil {
         if (countDwonView == null) {
             return;
         }
-        countDwonView.setMax(timeSeconds * 10);
+        countDwonView.setMax((int) (timeSeconds * 1000));
         countDwonView.setProgress(0);
         countDwonView.setTimeSeconds(timeSeconds);
         progress = 0;
@@ -77,10 +77,10 @@ public class TimeCountUtil {
             switch (msg.what) {
                 case UPDATE_PROGRESS:
                     mHandler.removeMessages(UPDATE_PROGRESS);
-                    if (progress < timeSeconds * 10) {
-                        progress++;
+                    if (progress < timeSeconds * 1000) {
+                        progress += timeSeconds * 1000 / 360;//步进为总时间的1/360
                         countDwonView.setProgress(progress);
-                        mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS, 100);
+                        mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS, (long) (timeSeconds * 1000 / 360));
                         break;
                     }
             }

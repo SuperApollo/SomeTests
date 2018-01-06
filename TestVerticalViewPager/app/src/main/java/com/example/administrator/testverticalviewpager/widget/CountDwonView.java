@@ -79,6 +79,11 @@ public class CountDwonView extends View {
     //总倒计时时长
     private float timeSeconds;
 
+    //扇形起始角度
+    private float startAngle = -90;
+    private RectF strokeOval;
+    private RectF fillOval;
+
 
     public CountDwonView(Context context) {
 
@@ -120,6 +125,9 @@ public class CountDwonView extends View {
         padding = mTypedArray.getDimension(R.styleable.CountDwonView_ringPadding, 5);
 
         mTypedArray.recycle();
+
+        strokeOval = new RectF();
+        fillOval = new RectF();
     }
 
 
@@ -129,7 +137,7 @@ public class CountDwonView extends View {
 
         super.onDraw(canvas);
 
-        center = getWidth() / 2;
+        center = Math.min(getWidth() / 2, getHeight() / 2);
         radius = (center - ringWidth);//外层圆环的半径
 
         //绘制外层圆
@@ -190,14 +198,15 @@ public class CountDwonView extends View {
         paint.setColor(ringProgressColor);
 
         //Stroke样式
-        RectF strokeOval = new RectF(center - radius, center - radius, center + radius,
+        strokeOval.set(center - radius, center - radius, center + radius,
                 center + radius);
         //FIll样式
         float left = center - radius + ringWidth + padding;
         float top = center - radius + ringWidth + padding;
         float right = center + radius - ringWidth - padding;
         float bottom = center + radius - ringWidth - padding;
-        RectF fillOval = new RectF(left, top, right, bottom);
+
+        fillOval.set(left, top, right, bottom);
 
         switch (style) {
             case STROKE: {
@@ -212,7 +221,7 @@ public class CountDwonView extends View {
                 if (progress != 0) {
                     //绘制圆弧
                     float sweepAngle = 360 * progress / max;
-                    canvas.drawArc(fillOval, -90, sweepAngle, true, paint);
+                    canvas.drawArc(fillOval, startAngle, sweepAngle, true, paint);
                 }
                 break;
             }
