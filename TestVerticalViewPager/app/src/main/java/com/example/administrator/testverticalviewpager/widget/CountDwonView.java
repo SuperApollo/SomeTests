@@ -194,7 +194,7 @@ public class CountDwonView extends View {
      */
     private void drawProgress(Canvas canvas) {
         //绘制进度 根据设置的样式进行绘制
-        paint.setStrokeWidth(ringWidth);
+        paint.setStrokeWidth(0);//x线宽，这里要设置为0，否则起始角度时夹角不锐
         paint.setColor(ringProgressColor);
 
         //Stroke样式

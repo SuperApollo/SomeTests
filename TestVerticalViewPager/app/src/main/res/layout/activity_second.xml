@@ -52,6 +52,7 @@
             app:ringProgressColor="@color/colorPrimaryDark"
             app:ringWidth="3dp"
             app:style="FILL"
+            app:ringPadding="1dp"
             app:textColor="@color/colorAccent"
             app:textIsShow="true"
             app:textSize="20sp" />
