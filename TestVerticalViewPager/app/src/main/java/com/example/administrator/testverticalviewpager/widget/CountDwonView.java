@@ -185,13 +185,20 @@ public class CountDwonView extends View {
         paint.setTypeface(Typeface.DEFAULT);
         //设置进度值
         int percent = (int) (((float) progress / (float) max) * 100);
-        String seconds = (int) ((100f - percent) * timeSeconds / 100) + "s";
+        float seconds = ((100f - percent) * timeSeconds / 100);
+        int secondsInt = 0;
+        if (seconds > 0) {
+            secondsInt = (int) (seconds + 1);
+        }else {
+            secondsInt = (int) seconds;
+        }
+        String time = secondsInt + "s";
         //获取文字的宽度 用于绘制文本内容
 //        float textWidth = paint.measureText(percent + "%");
-        float textWidth = paint.measureText(seconds);
+        float textWidth = paint.measureText(time);
         //绘制文本 会根据设置的是否显示文本的属性&是否是Stroke的样式进行判断
         if (textIsShow && percent != 0) {//&& style == STROKE
-            canvas.drawText(seconds, center - textWidth / 2, center + textSize / 2, paint);
+            canvas.drawText(time, center - textWidth / 2, center + textSize / 2, paint);
         }
     }
 
