@@ -33,7 +33,7 @@ public class SecondActivity extends Activity {
         mBar1 = findViewById(R.id.progress_bar_1);
         timeCountUtil = TimeCountUtil.getInstance(mBar1);
         timeCountUtil.updateCountDwonView(mBar1);
-        timeCountUtil.setTimeSeconds(30);
+        timeCountUtil.setTimeSeconds(25);
         findViewById(R.id.btn_ready_go).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
