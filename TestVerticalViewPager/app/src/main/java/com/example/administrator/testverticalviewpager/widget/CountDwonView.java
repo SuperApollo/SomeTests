@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -83,6 +85,8 @@ public class CountDwonView extends View {
     private float startAngle = -90;
     private RectF strokeOval;
     private RectF fillOval;
+    private MyHandler mHandler;
+    private final int UPDATE_PROGRESS = 0;
 
 
     public CountDwonView(Context context) {
@@ -128,6 +132,9 @@ public class CountDwonView extends View {
 
         strokeOval = new RectF();
         fillOval = new RectF();
+
+        mHandler = new MyHandler();
+
     }
 
 
@@ -437,5 +444,54 @@ public class CountDwonView extends View {
     public void setOnProgressListener(OnProgressListener mOnProgressListener) {
 
         this.mOnProgressListener = mOnProgressListener;
+    }
+
+    private class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case UPDATE_PROGRESS:
+                    mHandler.removeMessages(UPDATE_PROGRESS);
+                    if (progress < timeSeconds * 1000) {
+                        progress += timeSeconds * 1000 / 360;//步进为总时间的1/360
+                        CountDwonView.this.setProgress(progress);
+                        mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS, (long) (timeSeconds * 1000 / 360));
+                        break;
+                    }
+            }
+        }
+    }
+
+    /**
+     * 开始倒计时
+     *
+     * @param timeSeconds 倒计时时间
+     */
+    public void startCount(float timeSeconds) {
+        if (progress == max) {
+            progress = 0;
+        }
+        setMax((int) (timeSeconds * 1000));
+        setTimeSeconds(timeSeconds);
+        mHandler.sendEmptyMessageDelayed(UPDATE_PROGRESS, 100);
+    }
+
+    /**
+     * 停止倒计时
+     */
+    public void stopCount() {
+        mHandler.removeMessages(UPDATE_PROGRESS);
+    }
+
+    /**
+     * 取消倒计时,activity销毁时调用
+     */
+    public void cancelCount() {
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
+            mHandler = null;
+        }
+        progress = 0;
+        timeSeconds = 10;
     }
 }

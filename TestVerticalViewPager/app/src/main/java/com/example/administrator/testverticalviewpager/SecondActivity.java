@@ -23,7 +23,6 @@ public class SecondActivity extends Activity {
 
     private ImageView mIvReadyGo;
     private static CountDwonView mBar1;
-    private TimeCountUtil timeCountUtil;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,21 +30,20 @@ public class SecondActivity extends Activity {
         setContentView(R.layout.activity_second);
         mIvReadyGo = findViewById(R.id.iv_ready_go);
         mBar1 = findViewById(R.id.progress_bar_1);
-        timeCountUtil = TimeCountUtil.getInstance(mBar1);
-        timeCountUtil.updateCountDwonView(mBar1);
-        timeCountUtil.setTimeSeconds(25);
         findViewById(R.id.btn_ready_go).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 readyAnim();
-                timeCountUtil.startCount();
+//                timeCountUtil.startCount();
+                mBar1.startCount(25);
             }
         });
 
         findViewById(R.id.btn_stop).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timeCountUtil.stopCount();
+//                timeCountUtil.stopCount();
+                mBar1.stopCount();
             }
         });
     }
@@ -115,6 +113,6 @@ public class SecondActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        timeCountUtil.cancelCount();
+        mBar1.cancelCount();
     }
 }
