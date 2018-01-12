@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.administrator.testverticalviewpager.MainActivity">
+    tools:context="com.example.administrator.testverticalviewpager.activity.MainActivity">
 
     <com.example.administrator.testverticalviewpager.MyVerticalViewPager
         android:id="@+id/vertical_vp"

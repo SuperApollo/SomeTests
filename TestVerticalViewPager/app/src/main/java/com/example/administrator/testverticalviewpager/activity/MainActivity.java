@@ -1,4 +1,4 @@
-package com.example.administrator.testverticalviewpager;
+package com.example.administrator.testverticalviewpager.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,6 +21,12 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.administrator.testverticalviewpager.BroadcustData;
+import com.example.administrator.testverticalviewpager.DefaultTransformer;
+import com.example.administrator.testverticalviewpager.MyVerticalViewPager;
+import com.example.administrator.testverticalviewpager.R;
+import com.example.administrator.testverticalviewpager.TopBarUtil;
+import com.example.administrator.testverticalviewpager.VerticalViewPagerAdapter;
 import com.example.administrator.testverticalviewpager.bean.User;
 import com.example.administrator.testverticalviewpager.widget.LampView;
 import com.example.administrator.testverticalviewpager.widget.LampViewRight;

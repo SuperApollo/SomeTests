@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,12 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
+        <activity android:name=".activity.SecondActivity" />
         <!--android:theme="@android:style/Theme.Translucent"-->
-        <activity android:name=".OneActivity" />
-        <activity android:name=".TwoActivity" />
-        <activity android:name=".QuickGrabActivity" />
-        <activity android:name=".SwipeActivity" />
+        <activity android:name=".activity.OneActivity" />
+        <activity android:name=".activity.TwoActivity" />
+        <activity android:name=".activity.QuickGrabActivity" />
+        <activity android:name=".activity.SwipeActivity" />
     </application>
 
 </manifest>

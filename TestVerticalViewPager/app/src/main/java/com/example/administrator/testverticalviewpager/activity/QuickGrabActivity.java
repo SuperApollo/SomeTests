@@ -1,4 +1,4 @@
-package com.example.administrator.testverticalviewpager;
+package com.example.administrator.testverticalviewpager.activity;
 
 import android.app.Activity;
 import android.app.LocalActivityManager;
@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.administrator.testverticalviewpager.R;
 
 import java.util.ArrayList;
 import java.util.List;

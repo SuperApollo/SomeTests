@@ -1,4 +1,4 @@
-package com.example.administrator.testverticalviewpager;
+package com.example.administrator.testverticalviewpager.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
+import com.example.administrator.testverticalviewpager.R;
 import com.example.administrator.testverticalviewpager.utils.TimeCountUtil;
 import com.example.administrator.testverticalviewpager.widget.CountDwonView;
 
