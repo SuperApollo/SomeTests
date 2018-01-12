@@ -24,6 +24,7 @@ public class Test {
     }
 
     private static void show() {
-        System.out.println(sThread.get());
+
+        System.out.println(Thread.currentThread().getName() + ":" + sThread.get());
     }
 }
