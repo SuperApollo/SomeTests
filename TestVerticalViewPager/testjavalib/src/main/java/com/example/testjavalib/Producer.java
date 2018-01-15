@@ -28,12 +28,12 @@ public class Producer implements Runnable {
 
         try {
             while (isRunning) {
-                System.out.println("正在生产数据...");
+                System.out.println(Thread.currentThread().getName()+"正在生产数据...");
                 Thread.sleep(random.nextInt(DEFAULT_SLEEP));
                 data = "data: " + count.incrementAndGet();
-                System.out.println("将数据 " + data + "放入队列...");
+                System.out.println(Thread.currentThread().getName()+"将数据 " + data + "放入队列...");
                 if (!queue.offer(data, 2, TimeUnit.SECONDS)) {
-                    System.out.println("放入数据失败...");
+                    System.out.println(Thread.currentThread().getName()+"放入数据失败...");
                 }
 
             }

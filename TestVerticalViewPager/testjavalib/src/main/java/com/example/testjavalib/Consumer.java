@@ -23,11 +23,11 @@ public class Consumer implements Runnable {
         Random random = new Random();
         try {
             while (isRunning) {
-                System.out.println("正从队列取出数据...");
+                System.out.println(Thread.currentThread().getName() + "正从队列取出数据...");
                 String data = queue.poll(2, TimeUnit.SECONDS);
                 if (null != data) {
-                    System.out.println("拿到数据：" + data);
-                    System.out.println("正在消费数据...");
+                    System.out.println(Thread.currentThread().getName() + "拿到数据：" + data);
+                    System.out.println(Thread.currentThread().getName() + "正在消费数据...");
                     Thread.sleep(random.nextInt(DEFAULT_SLEEP));
 
                 } else {
