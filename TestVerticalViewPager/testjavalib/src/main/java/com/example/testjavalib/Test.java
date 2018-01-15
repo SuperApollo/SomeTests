@@ -3,7 +3,10 @@ package com.example.testjavalib;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 在Android studio中写纯java代码：
@@ -20,13 +23,61 @@ public class Test {
         sThread = new ThreadLocal<>();
         sThread.set("test threadlocal");
         show();
-        testBlockingQueue();
+//        testBlockingQueue();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 show();
             }
         }).start();
+        testThreadPool();
+    }
+
+    private static void testThreadPool() {
+//        testThreadPoolExcutor();
+//        testFixedThreadPool();
+//        testSingleThreadExecutor();
+        ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
+        executorExecute(cachedThreadPool);
+    }
+
+    private static void testSingleThreadExecutor() {
+        ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+        executorExecute(singleThreadExecutor);
+    }
+
+    private static void testFixedThreadPool() {
+        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
+        executorExecute(fixedThreadPool);
+    }
+
+
+    private static void testThreadPoolExcutor() {
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(3, 30, 1, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>(6));
+        executorExecute(executor);
+    }
+
+    private static void executorExecute(ExecutorService executor) {
+        for (int i = 0; i < 30; i++) {
+            final int finalI = i;
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(2000);
+                        System.out.println(Thread.currentThread().getName() + ":" + finalI);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            executor.execute(runnable);
+        }
     }
 
     private static void testBlockingQueue() {
