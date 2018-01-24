@@ -3,6 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/testjavalib/src/main/java/com/example/testjavalib/Consumer.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/testjavalib/src/main/java/com/example/testjavalib/Producer.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/testjavalib/src/main/java/com/example/testjavalib/TestSendMessage.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/testjavalib/src/main/java/com/example/testjavalib/XiaoMing.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/testjavalib/src/main/java/com/example/testjavalib/XioQiang.java" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
