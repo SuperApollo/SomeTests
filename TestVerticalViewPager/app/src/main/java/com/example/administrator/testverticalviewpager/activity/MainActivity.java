@@ -32,6 +32,7 @@ import com.example.administrator.testverticalviewpager.widget.LampView;
 import com.example.administrator.testverticalviewpager.widget.LampViewRight;
 import com.example.administrator.testverticalviewpager.widget.MyStackView;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -357,6 +358,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        testJson();
+
+    }
+
+    private void testJson() {
+        String jsonStr = "{\n" +
+                "\t\"data\": {\n" +
+                "\t\t\"receiveTime\": \"2018/01/03 13:26:17\",\n" +
+                "\t\t\"receive\": 1,\n" +
+                "\t\t\"content\": \"{ score: 10,coin: 20}\",\n" +
+                "\t\t\"msg\": \"\"\n" +
+                "\t},\n" +
+                "\t\"error\": [],\n" +
+                "\t\"status\": \"OK\"\n" +
+                "}";
     }
 
 
