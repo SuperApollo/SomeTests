@@ -1,6 +1,7 @@
 package com.example.administrator.testverticalviewpager.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -45,6 +46,12 @@ public class SecondActivity extends Activity {
             public void onClick(View v) {
 //                timeCountUtil.stopCount();
                 mBar1.stopCount();
+            }
+        });
+        findViewById(R.id.btn_constraint).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SecondActivity.this, TestContraintLayoutActivity.class));
             }
         });
     }

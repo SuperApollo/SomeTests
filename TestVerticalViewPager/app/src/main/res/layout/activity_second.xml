@@ -49,10 +49,10 @@
             app:max="100"
             app:progress="8"
             app:ringColor="@color/colorPrimary"
+            app:ringPadding="1dp"
             app:ringProgressColor="@color/colorPrimaryDark"
             app:ringWidth="3dp"
             app:style="FILL"
-            app:ringPadding="1dp"
             app:textColor="@color/colorAccent"
             app:textIsShow="true"
             app:textSize="20sp" />
@@ -74,6 +74,13 @@
             app:textColor="@color/colorPrimary"
             app:textIsShow="true"
             app:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_constraint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="测试constraintlayout" />
     </RelativeLayout>
 
 

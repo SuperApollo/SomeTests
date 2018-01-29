@@ -33,8 +33,9 @@ public class TestHandlerActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Message message = Message.obtain();
-                message.obj = Thread.currentThread().getName()+":我是主线程发来的消息";
-                threadHandler.sendMessage(message);
+                message.obj = Thread.currentThread().getName() + ":我是主线程发来的消息";
+                if (threadHandler != null)
+                    threadHandler.sendMessage(message);
             }
         });
 
@@ -53,12 +54,12 @@ public class TestHandlerActivity extends Activity {
                             }
                         };
                         try {
-                            Thread.sleep(5000);
+                            Thread.sleep(1000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         Message message = Message.obtain();
-                        message.obj = Thread.currentThread().getName()+":我是子线程发来的数据";
+                        message.obj = Thread.currentThread().getName() + ":我是子线程发来的数据";
                         mainHandler.sendMessage(message);
                         Looper.loop();
                     }
