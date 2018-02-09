@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -16,16 +17,17 @@ import android.widget.ImageView;
 import com.example.administrator.testverticalviewpager.R;
 import com.example.administrator.testverticalviewpager.utils.TimeCountUtil;
 import com.example.administrator.testverticalviewpager.widget.CountDwonView;
+import com.example.administrator.testverticalviewpager.widget.MyDialogFragment;
 
 /**
  * Created by Administrator on 2017/12/12.
  */
 
-public class SecondActivity extends Activity {
+public class SecondActivity extends FragmentActivity implements MyDialogFragment.MyDialogListner{
 
     private ImageView mIvReadyGo;
     private static CountDwonView mBar1;
-
+    private MyDialogFragment dialogFragment;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,22 @@ public class SecondActivity extends Activity {
                 startActivity(new Intent(SecondActivity.this, TestContraintLayoutActivity.class));
             }
         });
+
+        findViewById(R.id.btn_vp_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        findViewById(R.id.btn_dialog_fragment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogFragment = new MyDialogFragment();
+                dialogFragment.show(SecondActivity.this.getSupportFragmentManager(),"MyDialogFragment");
+            }
+        });
+
     }
 
     private void readyAnim() {
@@ -122,5 +140,10 @@ public class SecondActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         mBar1.cancelCount();
+    }
+
+    @Override
+    public void onDismissClicked(View view) {
+        dialogFragment.dismiss();
     }
 }
