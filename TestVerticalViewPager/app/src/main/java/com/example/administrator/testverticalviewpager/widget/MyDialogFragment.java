@@ -18,6 +18,16 @@ import com.example.administrator.testverticalviewpager.R;
 import com.example.administrator.testverticalviewpager.SwipePagerAdapter;
 import com.example.administrator.testverticalviewpager.fragment.SwipeFragment;
 
+import net.lucode.hackware.magicindicator.MagicIndicator;
+import net.lucode.hackware.magicindicator.ViewPagerHelper;
+import net.lucode.hackware.magicindicator.buildins.circlenavigator.CircleNavigator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +37,10 @@ import java.util.List;
 
 public class MyDialogFragment extends DialogFragment {
     MyDialogListner listner = null;
-    private ViewPager dialogContainer;
+    private ViewPager dialogViewPager;
     private List<Fragment> mFragments = new ArrayList<>();
     private SwipePagerAdapter mAdapter;
+    private MagicIndicator indicator;
 
     @Override
     public void onAttach(Context context) {
@@ -63,7 +74,8 @@ public class MyDialogFragment extends DialogFragment {
                 }
             }
         });
-        dialogContainer = view.findViewById(R.id.vp_dialog_container);
+        dialogViewPager = view.findViewById(R.id.vp_dialog_container);
+        indicator = view.findViewById(R.id.indicator_my_dialog);
 
         return view;
     }
@@ -81,8 +93,18 @@ public class MyDialogFragment extends DialogFragment {
         mFragments.add(fragment3);
 
         mAdapter = new SwipePagerAdapter(getChildFragmentManager(), mFragments);
-        dialogContainer.setAdapter(mAdapter);
+        dialogViewPager.setAdapter(mAdapter);
+
+        ScaleCircleNavigator scaleCircleNavigator = new ScaleCircleNavigator(getContext());
+        scaleCircleNavigator.setMinRadius(16);
+        scaleCircleNavigator.setCircleCount(mFragments.size());
+        scaleCircleNavigator.setNormalCircleColor(Color.DKGRAY);
+        scaleCircleNavigator.setSelectedCircleColor(Color.LTGRAY);
+        indicator.setNavigator(scaleCircleNavigator);
+        ViewPagerHelper.bind(indicator, dialogViewPager);
+
     }
+
 
     @NonNull
     @Override
