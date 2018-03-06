@@ -31,14 +31,16 @@ public class LampView extends LinearLayout {
     private static MyHandler mMyHandler;
     public static final int LOOP_TYPE_SINGLE = 2;//只亮一个，跑马灯
     public static final int LOOP_TYPE_ADD = 3;//逐个点亮
-    private static final int LIGHT_REST = 4;//所有灯恢复到灭掉状态
+    public static final int LOOP_TYPE_EXCHANGE = 4;//跑马灯
+    private static final int LIGHT_REST = 5;//所有灯恢复到灭掉状态
 
     private static long timeMillis;
     private boolean isRunning;
     private int picH;
     private int picW;
-    private int show_style;
+    private static int show_style;
     private WeakReference<Context> contextWeakReference;
+    private static boolean isEven = false;//是否为偶数
 
     public int getShow_style() {
         return show_style;
@@ -187,7 +189,6 @@ public class LampView extends LinearLayout {
             mMyHandler = new MyHandler(lights);
         else
             mMyHandler.setImageViews(lights);
-
     }
 
 
@@ -198,7 +199,10 @@ public class LampView extends LinearLayout {
      * @param loopType 循环的类型
      */
     public void startLight(long millis, int loopType) {
-        if (loopType < LOOP_TYPE_SINGLE || loopType > LOOP_TYPE_ADD) {//判断类型，要在正确的类型范围内
+        if (LampView.this.getVisibility() == GONE || LampView.this.getVisibility() == INVISIBLE) {
+            LampView.this.setVisibility(VISIBLE);
+        }
+        if (loopType < LOOP_TYPE_SINGLE || loopType > LOOP_TYPE_EXCHANGE) {//判断类型，要在正确的类型范围内
             Context context = contextWeakReference.get();
             if (context != null)
                 Toast.makeText(context, "请传入正确的循环类型", Toast.LENGTH_SHORT).show();
@@ -280,6 +284,27 @@ public class LampView extends LinearLayout {
                     currentLight = 0;
                     int what = (int) msg.obj;
                     mMyHandler.sendEmptyMessageDelayed(what, timeMillis);
+                    break;
+
+                case LOOP_TYPE_EXCHANGE:
+                    for (int i = 0; i < imageViews.size(); i++) {
+                        imageViews.get(i).setAlpha(1f);
+                        if (i % 2 == 0) {//偶数
+                            if (isEven) {
+                                imageViews.get(i).setImageResource(show_style == SHOW_STYLE_LEFT ? R.mipmap.light_red_left : R.mipmap.light_red_right);
+                            } else {
+                                imageViews.get(i).setImageResource(show_style == SHOW_STYLE_LEFT ? R.mipmap.light_yellow_left : R.mipmap.light_yellow_right);
+                            }
+                        } else {//奇数
+                            if (isEven) {
+                                imageViews.get(i).setImageResource(show_style == SHOW_STYLE_LEFT ? R.mipmap.light_yellow_left : R.mipmap.light_yellow_right);
+                            } else {
+                                imageViews.get(i).setImageResource(show_style == SHOW_STYLE_LEFT ? R.mipmap.light_red_left : R.mipmap.light_red_right);
+                            }
+                        }
+                    }
+                    mMyHandler.sendEmptyMessageDelayed(LOOP_TYPE_EXCHANGE, timeMillis);
+                    isEven = !isEven;
                     break;
             }
         }

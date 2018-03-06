@@ -238,8 +238,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                verticalViewPager.startLoop();
-                mLampViewLeft.startLight(200, LampView.LOOP_TYPE_ADD);
-                mLampViewRight.startLight(100, LampViewRight.LOOP_TYPE_SINGLE);
+//                mLampViewLeft.startLight(200, LampView.LOOP_TYPE_ADD);
+                mLampViewLeft.startLight(500, LampView.LOOP_TYPE_EXCHANGE);
+                mLampViewRight.startLight(500, LampViewRight.LOOP_TYPE_EXCHANGE);
             }
         });
 

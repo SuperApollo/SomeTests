@@ -14,6 +14,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.administrator.testverticalviewpager.R;
 import com.example.administrator.testverticalviewpager.utils.TimeCountUtil;
 import com.example.administrator.testverticalviewpager.widget.CountDwonView;
@@ -23,11 +24,14 @@ import com.example.administrator.testverticalviewpager.widget.MyDialogFragment;
  * Created by Administrator on 2017/12/12.
  */
 
-public class SecondActivity extends FragmentActivity implements MyDialogFragment.MyDialogListner{
+public class SecondActivity extends FragmentActivity implements MyDialogFragment.MyDialogListner {
 
     private ImageView mIvReadyGo;
     private static CountDwonView mBar1;
     private MyDialogFragment dialogFragment;
+    private LottieAnimationView mHorseRight;
+    private LottieAnimationView mHorseLeft;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,8 @@ public class SecondActivity extends FragmentActivity implements MyDialogFragment
                 readyAnim();
 //                timeCountUtil.startCount();
                 mBar1.startCount(25);
+                mHorseLeft.playAnimation();
+                mHorseRight.playAnimation();
             }
         });
 
@@ -68,9 +74,14 @@ public class SecondActivity extends FragmentActivity implements MyDialogFragment
             @Override
             public void onClick(View v) {
                 dialogFragment = new MyDialogFragment();
-                dialogFragment.show(SecondActivity.this.getSupportFragmentManager(),"MyDialogFragment");
+                dialogFragment.show(SecondActivity.this.getSupportFragmentManager(), "MyDialogFragment");
             }
         });
+
+        mHorseLeft = findViewById(R.id.horse_left);
+        mHorseRight = findViewById(R.id.horse_right);
+        mHorseLeft.setImageAssetsFolder("images/");
+        mHorseRight.setImageAssetsFolder("images/");
 
     }
 

@@ -97,8 +97,51 @@
             android:layout_below="@+id/btn_vp_activity"
             android:layout_centerHorizontal="true"
             android:text="测试DialogFragment" />
+
+        <LinearLayout
+            android:layout_width="14dp"
+            android:layout_height="match_parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/horse_left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:lottie_fileName="horse_light.json" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/horse_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:lottie_fileName="horse_light.json" />
+        </LinearLayout>
+
+
     </RelativeLayout>
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/cons_iv"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:background="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:text="aaaaaaa"
+            app:layout_constraintLeft_toRightOf="@+id/cons_iv" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <RadioGroup
         android:layout_width="match_parent"
